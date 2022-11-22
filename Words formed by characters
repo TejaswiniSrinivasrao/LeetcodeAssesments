@@ -1,0 +1,41 @@
+You are given an array of strings words and a string chars.
+
+A string is good if it can be formed by characters from chars (each character can only be used once).
+
+Return the sum of lengths of all good strings in words.
+
+
+Solution:
+
+var countCharacters = function(words, chars) {
+    let finalCount = 0;
+    let charObj;
+    for (let i = 0; i < words.length; i++) {
+        
+        charObj = makeCharObj(chars);
+        
+        for (let j = 0; j < words[i].length; j++) {
+            let char = words[i][j];
+            
+            if (j == words[i].length - 1 && charObj[char]) {
+                finalCount += words[i].length;
+            } else if (charObj[char]) {
+                charObj[char]--;
+            } else {
+                break;
+            }
+        }
+    }
+    return finalCount;
+};
+
+var makeCharObj = (chars) => {
+    let charObj = {};
+    for (let char of chars) {
+        
+        charObj[char] ? charObj[char] += 1 : charObj[char] = 1;
+        
+    }
+    return charObj;
+    
+}
