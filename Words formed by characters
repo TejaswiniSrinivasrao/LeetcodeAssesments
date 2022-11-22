@@ -11,12 +11,13 @@ var countCharacters = function(words, chars) {
     let finalCount = 0;
     let charObj;
     for (let i = 0; i < words.length; i++) {
-        
+        // Loop to get the length of array to find number of characters
         charObj = makeCharObj(chars);
-        
+        //calling makeCharobj function by passing the chars available
         for (let j = 0; j < words[i].length; j++) {
+        // Loop to get the length of each word
             let char = words[i][j];
-            
+           // conditon to check if at the end of the word length  and charObj has the value or not 
             if (j == words[i].length - 1 && charObj[char]) {
                 finalCount += words[i].length;
             } else if (charObj[char]) {
@@ -31,8 +32,9 @@ var countCharacters = function(words, chars) {
 
 var makeCharObj = (chars) => {
     let charObj = {};
+    //looping through the available characters
     for (let char of chars) {
-        
+        // checking for character if it is there then add 1 else assigning 1 to char array to count
         charObj[char] ? charObj[char] += 1 : charObj[char] = 1;
         
     }
